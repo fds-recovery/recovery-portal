@@ -1,0 +1,696 @@
+/* =====================================================
+   RECOVERY PORTAL V5
+   FORENSIC DIGITAL SERVICES
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#081019;
+
+    color:#d7e3ef;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    overflow:hidden;
+
+}
+
+/* ---------------- Boot Screen ---------------- */
+
+#bootScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#081019;
+
+}
+
+.bootContainer{
+
+    width:900px;
+
+    max-width:90%;
+
+}
+
+.bootContainer h1{
+
+    color:#78ffaf;
+
+    letter-spacing:2px;
+
+    font-size:34px;
+
+    margin-bottom:12px;
+
+}
+
+.bootSubTitle{
+
+    color:#7f97aa;
+
+    margin-bottom:35px;
+
+}
+
+#bootText{
+
+    color:#78ffaf;
+
+    font-family:Consolas, monospace;
+
+    line-height:1.8;
+
+    min-height:220px;
+
+}
+
+/* ---------------- Login Screen ---------------- */
+
+#loginScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#081019;
+
+}
+
+.loginCard{
+
+    width:520px;
+
+    max-width:92%;
+
+    background:#101b28;
+
+    border:1px solid #233446;
+
+    border-radius:12px;
+
+    padding:40px;
+
+    box-shadow:0 0 35px rgba(0,0,0,.45);
+
+}
+
+.loginCard h2{
+
+    color:#78ffaf;
+
+    margin-bottom:10px;
+
+}
+
+.loginCard p{
+
+    color:#9fb3c6;
+
+    margin-bottom:18px;
+
+}
+
+#code{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#081019;
+
+    color:white;
+
+    border:1px solid #30465c;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    margin-bottom:20px;
+
+}
+
+#code:focus{
+
+    outline:none;
+
+    border-color:#78ffaf;
+
+}
+
+#verifyButton{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#1d7a55;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+#verifyButton:hover{
+
+    background:#28a06f;
+
+}
+
+#message{
+
+    margin-top:18px;
+
+    color:#ff7f7f;
+
+}
+
+/* ---------------- Dashboard ---------------- */
+
+#dashboard{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#081019;
+
+    color:#78ffaf;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+}
+
+/* ---------- Dashboard ---------- */
+
+.dashboard{
+
+    width:1100px;
+
+    max-width:92%;
+
+}
+
+.topBar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:40px;
+
+}
+
+.topBar h2{
+
+    color:#78ffaf;
+
+    font-size:34px;
+
+}
+
+.statusBadge{
+
+    background:#1d7a55;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+}
+
+.infoGrid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+
+}
+
+.infoCard{
+
+    background:#101b28;
+
+    border:1px solid #233446;
+
+    border-radius:12px;
+
+    padding:25px;
+
+}
+
+.infoCard h3{
+
+    color:#78ffaf;
+
+    margin-bottom:18px;
+
+}
+
+.infoCard p{
+
+    margin:10px 0;
+
+    color:#d2dbe5;
+
+}
+
+.actionArea{
+
+    margin-top:40px;
+
+    text-align:center;
+
+}
+
+#openEvidence{
+
+    padding:16px 34px;
+
+    font-size:18px;
+
+    background:#1d7a55;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+#openEvidence:hover{
+
+    background:#28a06f;
+
+}
+
+/* ---------- Recovered Files ---------- */
+
+.filesPanel{
+
+    margin-top:40px;
+
+    background:#101b28;
+
+    border:1px solid #233446;
+
+    border-radius:12px;
+
+    padding:25px;
+
+}
+
+.filesPanel h3{
+
+    color:#78ffaf;
+
+    margin-bottom:20px;
+
+}
+
+.fileRow{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px;
+
+    border-bottom:1px solid #233446;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.fileRow:last-child{
+
+    border-bottom:none;
+
+}
+
+.fileRow:hover{
+
+    background:#172536;
+
+}
+
+.disabled{
+
+    opacity:.35;
+
+    pointer-events:none;
+
+}
+
+.enabled{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+/* ---------- Recovery Progress ---------- */
+
+.progressPanel{
+
+    margin-top:35px;
+
+    margin-bottom:35px;
+
+}
+
+.progressPanel h3{
+
+    color:#78ffaf;
+
+    margin-bottom:15px;
+
+}
+
+.progressOuter{
+
+    width:100%;
+
+    height:18px;
+
+    background:#223344;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+#progressBar{
+
+    width:0%;
+
+    height:100%;
+
+    background:#38c172;
+
+    transition:width .35s;
+
+}
+
+#progressText{
+
+    margin-top:12px;
+
+    color:#b7c6d6;
+
+}
+
+/* ---------- Evidence Viewer ---------- */
+
+#viewerOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.82);
+
+}
+
+.viewerWindow{
+
+    width:1000px;
+
+    max-width:92%;
+
+    background:#101b28;
+
+    border:1px solid #233446;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+.viewerHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 24px;
+
+    border-bottom:1px solid #233446;
+
+}
+
+.viewerHeader h2{
+
+    color:#78ffaf;
+
+}
+
+#closeViewer{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+}
+
+.viewerContent{
+
+    min-height:650px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+#loadingText{
+
+    font-size:24px;
+
+    color:#78ffaf;
+
+}
+
+#imageContainer{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+#evidenceImage{
+
+    max-width:100%;
+
+    max-height:70vh;
+
+}
+
+/* ---------- Image Reconstruction ---------- */
+
+#imageReveal{
+
+    position:relative;
+
+    display:inline-block;
+
+    overflow:hidden;
+
+}
+
+#revealMask{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:#081019;
+
+    transform:translateY(0%);
+
+}
+
+#recoveryComplete{
+
+    margin-top:25px;
+
+    color:#78ffaf;
+
+    font-size:22px;
+
+    letter-spacing:1px;
+
+    opacity:0;
+
+    transition:opacity 1.5s;
+
+}
+
+/* ---------- FDS Logo ---------- */
+
+.logoArea{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.logoIcon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+}
+
+.logoIcon img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.logoSubtitle{
+
+    margin-top:4px;
+
+    color:#91a6ba;
+
+    font-size:14px;
+
+}
+
+/* ---------- Report Viewer ---------- */
+
+#reportOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.82);
+
+}
+
+.reportWindow{
+
+    width:850px;
+
+    max-width:90%;
+
+    background:white;
+
+    color:#222;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+
+.reportContent{
+
+    padding:35px;
+
+    line-height:1.8;
+
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensic Digital Services - Recovery Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Boot Screen -->
+    <section id="bootScreen">
+
+        <div class="bootContainer">
+
+            <h1>FORENSIC DIGITAL SERVICES</h1>
+
+            <div class="bootSubTitle">
+                Authorised Recovery Terminal
+            </div>
+
+            <div id="bootText"></div>
+
+        </div>
+
+    </section>
+
+    <!-- Login Screen -->
+    <section id="loginScreen" style="display:none;">
+
+        <div class="loginCard">
+
+            <h2>Recovery Portal</h2>
+
+            <p>Recovery Code (required)</p>
+
+            <input
+                id="code"
+                type="text"
+                placeholder="Enter recovery code">
+
+            <button id="verifyButton">
+                Verify Recovery Code
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" style="display:none;">
+
+    <div class="dashboard">
+
+        <div class="topBar">
+
+    <div class="logoArea">
+
+        <div class="logoIcon">
+
+    <img src="assets/fds-logo.png" alt="FDS Logo">
+
+</div>
+
+        <div>
+
+            <h2>Forensic Digital Services</h2>
+
+            <p class="logoSubtitle">
+                Recovery Portal
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="statusBadge">
+
+        CONNECTED
+
+    </div>
+
+</div>
+
+        <div class="infoGrid">
+
+            <div class="infoCard">
+
+                <h3>Recovery Summary</h3>
+
+                <p>Status: Ready</p>
+                <p>Evidence Items: 1</p>
+                <p>Integrity: Verified</p>
+
+            </div>
+
+            <div class="infoCard">
+
+                <h3>Case Information</h3>
+
+                <p>Case ID: FDS-2025-0527</p>
+                <p>Classification: Personal Archive</p>
+                <p>Recovery Mode: Secure</p>
+
+            </div>
+
+        </div>
+
+        <div class="filesPanel">
+
+      <div class="progressPanel">
+
+    <h3>Recovery Progress</h3>
+
+    <div class="progressOuter">
+
+        <div id="progressBar"></div>
+
+    </div>
+
+    <p id="progressText">0%</p>
+
+</div>
+
+    <h3>Recovered Files</h3>
+
+    <div class="fileRow" id="caseReport">
+
+    <span>📄</span>
+
+    <span>CASE_REPORT.pdf</span>
+
+</div>
+
+    <div class="fileRow disabled" id="imageFile">
+
+        <span>🖼</span>
+
+        <span>IMG_0427.JPG</span>
+
+    </div>
+
+</div>
+
+    </div>
+
+</section>
+
+    <!-- Evidence Viewer -->
+    <section id="viewerOverlay" style="display:none;">
+
+    <div class="viewerWindow">
+
+        <div class="viewerHeader">
+
+            <h2>Evidence Viewer</h2>
+
+            <button id="closeViewer">✕</button>
+
+        </div>
+
+        <div class="viewerContent">
+
+            <div id="loadingText">
+
+                Decrypting evidence...
+
+            </div>
+
+            <div id="imageContainer" style="display:none;">
+
+    <div id="imageReveal">
+
+        <img
+            id="evidenceImage"
+            src="assets/recovered-photo.jpg"
+            alt="Recovered Evidence">
+
+        <div id="revealMask"></div>
+
+    </div>
+
+    <p id="recoveryComplete" style="display:none;">
+        Recovery completed successfully.
+    </p>
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div id="reportOverlay" style="display:none;">
+
+    <div class="reportWindow">
+
+        <div class="viewerHeader">
+
+            <h2>CASE_REPORT.pdf</h2>
+
+            <button id="closeReport">✕</button>
+
+        </div>
+
+        <div class="reportContent">
+
+            <h3>Digital Recovery Summary</h3>
+
+            <br>
+
+            <p><strong>Case ID:</strong> FDS-2025-0527</p>
+
+            <p><strong>Status:</strong> Recovery Successful</p>
+
+            <p><strong>Integrity:</strong> VERIFIED</p>
+
+            <p><strong>Recovered Files:</strong> 1 image</p>
+
+            <br>
+
+            <hr>
+
+            <br>
+
+            <p>
+                The requested archive has been successfully reconstructed.
+                No data corruption detected.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
